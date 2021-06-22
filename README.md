@@ -15,16 +15,20 @@ We will be using Python as the language. Then we will use the Arcade and Random 
 
 *Please look at the Dino Jumper Mockup Image to the left*
 
-Main Scene
- * Start Button
+Main Scene(2)
+ * Start Button(2)
 
-Game Scene
- *
- *
+Game Scene(1)
+ * Animal Jumper(1)
+ * Plants(1)
+ * Food(1)
+ * Collision detection(1)
+ * Score Display(2)
+ * Sound effects(2)
 
-Lose Scene
- * Announcement
- * Restart Button
+Lose Scene(3)
+ * Announcement(3)
+ * Restart Button(2)
 
 
 --What is your timeline? The answer to this question is mostly already decided. Just take a minute to review the rest of the course schedule together.
