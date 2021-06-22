@@ -34,3 +34,21 @@ Lose Scene(3)
 --What is your timeline? The answer to this question is mostly already decided. Just take a minute to review the rest of the course schedule together.
 
 Our timeline is to keep up with the course guidelines for each week and not get behind. 
+
+
+
+
+
+Actor Classes
+ * Animal
+ * Plants
+ * Food
+
+Action Classes
+ * ControlActorsAction
+ * MoveActorsAction
+ * HandleCollisionsAction
+ * HandleGameOverAction
+ * DrawActorsAction
+ * FoodAnimalCollisionHandler
+ * AnimalPlantsCollisionHandler
