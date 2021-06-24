@@ -22,6 +22,7 @@ Game Scene(1)
  * Animal Jumper(1)
  * Plants(1)
  * Food(1)
+ * Ground(1)
  * Collision detection(1)
  * Score Display(2)
  * Sound effects(2)
@@ -43,6 +44,7 @@ Actor Classes
  * Animal
  * Plants
  * Food
+ * Ground
 
 Action Classes
  * ControlActorsAction
