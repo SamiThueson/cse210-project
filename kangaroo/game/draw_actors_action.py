@@ -13,10 +13,12 @@ class DrawActorsAction(Action):
         _output_service (OutputService): An instance of OutputService.
     """
 
-    def __init__(self, output_service):
-        """The class constructor.
-        
-        Args:
-            _output_service (OutputService): An instance of OutputService.
-        """
-        self._output_service = output_service
+    def __init__(self):
+        pass
+
+    def execute(self, scene, cue, callback):
+        cast = scene.get_cast()
+        all_actors = cast.get_all_actors()
+        for actor in all_actors:
+            actor.draw()
+    

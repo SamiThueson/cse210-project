@@ -52,7 +52,9 @@ class Director(arcade.Window, Action.Callback):
         self._cue_action(Cue.ON_UPDATE, cue_info)
         
     def _cue_action(self, cue_name, cue_info):
+        cast = self._scene.get_cast()
+        script = self._scene.get_script()
         cue = Cue(cue_name, cue_info)
-        for action in self._scene.get_script().get_actions():
+        for action in script.get_actions():
             if action.is_enabled():
-                action.execute(self._scene, cue, self)
+                action.execute(cast, cue, self)
