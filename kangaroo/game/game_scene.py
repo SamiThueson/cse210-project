@@ -1,23 +1,37 @@
-from game.move_animal_action import MoveAnimalAction
-from game import draw_actors_action
-from core.scene import Scene
 from core.cast import Cast
-from game.animal import Animal
-from core.script import Script
-from game.draw_actors_action import DrawActorsAction
 from core.cue import Cue
+from core.scene import Scene
+from core.script import Script
+from game import handle_collisions_action
+from game import move_actors_action
+from game import control_actors_action
+from game.animal import Animal
+from game.handle_collisions_action import HandleCollisionsAction
+from game.control_actors_action import ControlActorsAction
+from game.draw_actors_action import DrawActorsAction
+from game.move_actors_action import MoveActorsAction
+
 
 class GameScene(Scene):
 
     def __init__(self):
+        
+        # create the cast
         animal = Animal()
+
         cast = Cast()
-        cast.add_actor("animal", animal)
+        cast.add_actor("animals", animal)
         self.set_cast(cast)
 
-        move_animal_action = MoveAnimalAction()
+        # create the script
+        control_actors_action = ControlActorsAction()
+        move_actors_action = MoveActorsAction()
+        handle_collisions_action = HandleCollisionsAction()
         draw_actors_action = DrawActorsAction()
+
         script = Script()
-        script.add_action(Cue.ON_UPDATE, move_animal_action)
+        script.add_action(Cue.ON_KEY_PRESS, control_actors_action)
+        script.add_action(Cue.ON_UPDATE, move_actors_action)
+        script.add_action(Cue.ON_UPDATE, handle_collisions_action)
         script.add_action(Cue.ON_DRAW, draw_actors_action)
         self.set_script(script)
