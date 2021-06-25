@@ -29,7 +29,11 @@ class Cast:
         return self._current_actors.get(group, list())
 
     def get_all_actors(self):
-        return list(chain(self._current_actors.values()))
+        all_actors = []
+        for group in self._current_actors:
+            all_actors.extend(self._current_actors[group])
+        return all_actors
+        # return list(chain(self._current_actors.values()))
 
     def remove_actor(self, group, actor):
         self._removed_actors[group].append(actor)

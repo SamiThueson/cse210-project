@@ -55,6 +55,6 @@ class Director(arcade.Window, Action.Callback):
         cast = self._scene.get_cast()
         script = self._scene.get_script()
         cue = Cue(cue_name, cue_info)
-        for action in script.get_actions():
+        for action in script.get_actions(cue_name):
             if action.is_enabled():
                 action.execute(cast, cue, self)
