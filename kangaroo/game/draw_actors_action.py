@@ -8,9 +8,15 @@ class DrawActorsAction(Action):
 
     def execute(self, cast, cue, callback):
         self._draw_animal(cast)
+        self._draw_ground(cast)
 
     def _draw_animal(self, cast):
         animals = cast.get_actors("animals")
         for animal in animals:
             animal.draw()
+
+    def _draw_ground(self, cast):
+        ground = cast.get_actors("ground")
+        for tile in ground:
+            tile.draw()
     

@@ -2,10 +2,8 @@ from core.cast import Cast
 from core.cue import Cue
 from core.scene import Scene
 from core.script import Script
-from game import handle_collisions_action
-from game import move_actors_action
-from game import control_actors_action
 from game.animal import Animal
+from game.ground import Ground
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
@@ -17,10 +15,13 @@ class GameScene(Scene):
     def __init__(self):
         
         # create the cast
-        animal = Animal()
-
         cast = Cast()
+        animal = Animal()
         cast.add_actor("animals", animal)
+        for i in range(10):
+            ground = Ground()
+            ground.left = (i * ground.width)
+            cast.add_actor("ground", ground)
         self.set_cast(cast)
 
         # create the script
