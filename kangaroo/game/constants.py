@@ -8,7 +8,7 @@ CENTER_Y = SCREEN_HEIGHT / 2
 GRAVITY = 0.5
 
 # ANIMAL CONSTANTS
-ANIMAL_JUMP_SPEED = 10
+ANIMAL_JUMP_SPEED = 15
 ANIMAL_ANIMATION_RATE = 3
 ANIMAL_PATH = ":resources:images/animated_characters/female_person"
 ANIMAL_FALLING = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_fall.png")
