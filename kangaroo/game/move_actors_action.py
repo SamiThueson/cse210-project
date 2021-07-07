@@ -24,3 +24,7 @@ class MoveActorsAction(Action):
             tile.left = ground[-1].right
             ground.append(tile)
     
+    def _move_plants(self, cast):
+        plants = cast.get_actors("plants")
+        for plant in plants:
+            plant.update()

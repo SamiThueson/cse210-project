@@ -4,6 +4,7 @@ from core.scene import Scene
 from core.script import Script
 from game.animal import Animal
 from game.ground import Ground
+from game.plants import Plants
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
@@ -17,11 +18,13 @@ class GameScene(Scene):
         # create the cast
         cast = Cast()
         animal = Animal()
+        plants = Plants()
         cast.add_actor("animals", animal)
         for i in range(10):
             ground = Ground()
             ground.left = (i * ground.width)
             cast.add_actor("ground", ground)
+        cast.add_actor("plants", plants)
         self.set_cast(cast)
 
         # create the script
