@@ -25,7 +25,14 @@ ANIMAL_WALKING[6] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk6.png")
 ANIMAL_WALKING[7] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk7.png")
 
 # GROUND CONSTANTS
-
 GROUND_MOVE_SPEED = -10
 GROUND_PATH = ":resources:images/tiles"
 GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grass.png")
+
+# PLANT CONSTANTS
+PLANT_MOVE_SPEED = -10
+PLANT_PATH = ":resources:images/tiles"
+PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
+PLANT_BUSH = arcade.load_texture(f"{PLANT_PATH}/bush.png")
+PLANT_ROCK = arcade.load_texture(f"{PLANT_PATH}/rock.png")
+PLANT_MUSHROOM = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
