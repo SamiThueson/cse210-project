@@ -9,8 +9,8 @@ class Plants(Actor):
         super().__init__()
         self.texture = constants.PLANT_CACTUS
         self.scale = 0.85
-        self.center_x = random.randint(0, 700) + (self.width / 2)
-        self.center_y = 100 + (self.height / 2)
+        self.center_x = constants.SCREEN_WIDTH + (self.width / 2)
+        self.center_y = 95 + (self.height / 2)
         self.change_x = constants.PLANT_MOVE_SPEED
 
     def update(self):

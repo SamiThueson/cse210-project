@@ -36,3 +36,5 @@ PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
 PLANT_BUSH = arcade.load_texture(f"{PLANT_PATH}/bush.png")
 PLANT_ROCK = arcade.load_texture(f"{PLANT_PATH}/rock.png")
 PLANT_MUSHROOM = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
+
+COLLIDE_SOUND = arcade.load_sound(":resources:sounds/hit1.wav")
