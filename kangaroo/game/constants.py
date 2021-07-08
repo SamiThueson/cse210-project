@@ -1,4 +1,5 @@
 import arcade
+import random
 
 # GAME CONSTANTS
 SCREEN_HEIGHT = 600
@@ -25,13 +26,27 @@ ANIMAL_WALKING[6] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk6.png")
 ANIMAL_WALKING[7] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk7.png")
 
 # GROUND CONSTANTS
-
 GROUND_MOVE_SPEED = -10
 GROUND_PATH = ":resources:images/tiles"
-GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grass.png")
+
 
 #COIN
 COIN_MOVE_SPEED = -40
 COIN_PATH = ":resources:images/items"
 COIN_PIC =  arcade.load_texture(f"{COIN_PATH}/coinGold.png")
 COIN_COUNT = 1
+
+GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grassMid.png")
+
+# PLANT CONSTANTS
+PLANT_MOVE_SPEED = -10
+PLANT_PATH = ":resources:images/tiles"
+#PLANT_IMAGE = [None] * random.randint(1, 4)
+PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
+# PLANT_IMAGE[0] = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
+# PLANT_IMAGE[1] = arcade.load_texture(f"{PLANT_PATH}/bush.png")
+# PLANT_IMAGE[2] = arcade.load_texture(f"{PLANT_PATH}/rock.png")
+# PLANT_IMAGE[3] = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
+
+COLLIDE_SOUND = arcade.load_sound(":resources:sounds/jump5.wav")
+

@@ -1,6 +1,9 @@
 
+from game import animal
+
 from core.action import Action
 import arcade
+from game import constants
 
 class HandleCollisionsAction(Action):
     
@@ -9,6 +12,7 @@ class HandleCollisionsAction(Action):
 
     def execute(self, cast, cue, callback):
         self._handle_ground_collisions(cast)
+        self._handle_plant_animal_collisions(cast)
 
     def _handle_ground_collisions(self, cast):
         animal = cast.first_actor("animals")
@@ -27,6 +31,10 @@ class HandleCollisionsAction(Action):
         #     animal.bottom = 100
         #     animal.walk()
 
-    
-
-    
+    def _handle_plant_animal_collisions(self, cast):
+        plants = cast.get_actors("plants")
+        animal = cast.first_actor("animals")
+        for plant in plants:
+            if arcade.check_for_collision(animal, plant):
+                print("Ran into plant")
+                arcade.play_sound(constants.COLLIDE_SOUND)

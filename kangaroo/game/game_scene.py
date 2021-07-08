@@ -5,7 +5,11 @@ from core.scene import Scene
 from core.script import Script
 from game.animal import Animal
 from game.ground import Ground
+
 from game.coin import Coin
+
+from game.plants import Plants
+
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
@@ -18,17 +22,23 @@ class GameScene(Scene):
         self.coin_list = arcade.SpriteList()
         # create the cast
         cast = Cast()
-        animal = Animal() 
+        animal = Animal()
+        plants = Plants()
+
         cast.add_actor("animals", animal)
         for i in range(10):
             ground = Ground()
             ground.left = (i * ground.width)
             cast.add_actor("ground", ground)
+
         for i in range(5):
             coin = Coin()
             self.coin_list.append(coin)
            
             cast.add_actor("coin", coin)
+
+        cast.add_actor("plants", plants)
+
         self.set_cast(cast)
 
 
