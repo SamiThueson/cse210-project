@@ -2,6 +2,7 @@ import random
 from core.action import Action
 from game import constants
 from game.plants import Plants
+from game.coin import Coin
 
 
 class MoveActorsAction(Action):
@@ -9,12 +10,15 @@ class MoveActorsAction(Action):
     def __init__(self):
         super().__init__()
         self._frame_for_plants = 180 #180 means 3 seconds
+        self._frame_for_coin = 180
         self._current_frame = 0
+        self._current_coin_frame = 0
 
     def execute(self, cast, cue, callback):
         self._move_animal(cast)
         self._move_ground(cast)
         self._move_plants(cast)
+        self._move_coin(cast)
 
     def _move_animal(self, cast):
         animal = cast.first_actor("animals")
@@ -34,6 +38,17 @@ class MoveActorsAction(Action):
         coin = cast.get_actors("coin")
         for c in coin:
             c.update()
+        if len(coin) != 0 and coin[0].right < 0:
+            coin.pop(0)
+        self._current_coin_frame += 1
+        if self._current_coin_frame >= self._frame_for_coin:
+            
+            coin = Coin()
+            cast.add_actor("coin", coin)
+            self._current_coin_frame = 0
+            self._frame_for_coin = random.randint(1, 180)
+
+
       
 
     def _move_plants(self, cast):
@@ -44,9 +59,7 @@ class MoveActorsAction(Action):
             plants.pop(0)
             
         self._current_frame += 1
-        print(self._current_frame)
         if self._current_frame >= self._frame_for_plants:
-            print('Hello')
             plants = Plants()
             cast.add_actor("plants", plants)
             self._current_frame = 0

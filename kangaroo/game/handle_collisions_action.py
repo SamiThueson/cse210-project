@@ -13,18 +13,26 @@ class HandleCollisionsAction(Action):
     def execute(self, cast, cue, callback):
         self._handle_ground_collisions(cast)
         self._handle_plant_animal_collisions(cast)
+        self._handle_coin_animal_collisions(cast)
 
     def _handle_ground_collisions(self, cast):
         animal = cast.first_actor("animals")
         ground = cast.get_actors("ground")
-        coin = cast.get_actors("coin")
         for tile in ground:
             if arcade.check_for_collision(animal, tile):
                 animal.bottom = tile.top
                 animal.walk()
+
+    def _handle_coin_animal_collisions(self,cast):
+        animal = cast.first_actor("animals")
+        coin = cast.get_actors("coin")
         for c in coin:
             if arcade.check_for_collision(animal,c):
-                c.remove_from_sprite_lists()
+               cast.remove_actor("coin",c)
+               animal.add_coins()
+               if animal.get_coins() % 5 == 0:
+                   animal.add_lives()
+                   print(animal.get_lives())
 
         # a temporary work around until the ground is finished (mm)
         # if animal.bottom <= 100:
@@ -36,5 +44,7 @@ class HandleCollisionsAction(Action):
         animal = cast.first_actor("animals")
         for plant in plants:
             if arcade.check_for_collision(animal, plant):
-                print("Ran into plant")
                 arcade.play_sound(constants.COLLIDE_SOUND)
+                animal.remove_lives()
+                if animal.get_lives() == 0:
+                    print('GAME OVER')

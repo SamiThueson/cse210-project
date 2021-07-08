@@ -14,6 +14,8 @@ class Animal(Actor):
         self._current_frame = 0
         self._texture_index = 0
         self._num_jumps = 0
+        self._lives = 3
+        self._coins = 0
         
     def jump(self):
         if not self._is_jumping:
@@ -48,6 +50,28 @@ class Animal(Actor):
                 self._current_frame = 0
                 self._texture_index = (self._texture_index + 1) % num_textures
                 self.texture = constants.ANIMAL_WALKING[self._texture_index]
+    
+    def get_lives(self):
+        return self._lives
+
+    def add_lives(self):
+        self._lives += 1
+
+    def remove_lives(self):
+        self._lives -= 1
+        if self._lives < 0:
+            self._lives = 0
+
+    def get_coins(self):
+        return self._coins
+
+    def add_coins(self):
+        self._coins += 1
+    
+    def remove_coins(self):
+        self._coins -= 1
+        if self._coins < 0:
+            self._coins = 0
 
     def _update_position(self):
         self.change_y -= constants.GRAVITY   

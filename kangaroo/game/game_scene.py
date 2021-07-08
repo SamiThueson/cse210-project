@@ -31,7 +31,7 @@ class GameScene(Scene):
             ground.left = (i * ground.width)
             cast.add_actor("ground", ground)
 
-        for i in range(5):
+        for i in range(1):
             coin = Coin()
             self.coin_list.append(coin)
            

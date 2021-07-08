@@ -31,7 +31,7 @@ GROUND_PATH = ":resources:images/tiles"
 
 
 #COIN
-COIN_MOVE_SPEED = -40
+COIN_MOVE_SPEED = -10
 COIN_PATH = ":resources:images/items"
 COIN_PIC =  arcade.load_texture(f"{COIN_PATH}/coinGold.png")
 COIN_COUNT = 1
