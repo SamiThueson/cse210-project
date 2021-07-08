@@ -1,3 +1,4 @@
+
 from core.action import Action
 import arcade
 
@@ -12,10 +13,15 @@ class HandleCollisionsAction(Action):
     def _handle_ground_collisions(self, cast):
         animal = cast.first_actor("animals")
         ground = cast.get_actors("ground")
+        coin = cast.get_actors("coin")
         for tile in ground:
             if arcade.check_for_collision(animal, tile):
                 animal.bottom = tile.top
                 animal.walk()
+        for c in coin:
+            if arcade.check_for_collision(animal,c):
+                c.remove_from_sprite_lists()
+
         # a temporary work around until the ground is finished (mm)
         # if animal.bottom <= 100:
         #     animal.bottom = 100

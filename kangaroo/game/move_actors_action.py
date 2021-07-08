@@ -24,3 +24,8 @@ class MoveActorsAction(Action):
             tile.left = ground[-1].right
             ground.append(tile)
     
+    def _move_coin(self, cast):
+        coin = cast.get_actors("coin")
+        for c in coin:
+            c.update()
+      

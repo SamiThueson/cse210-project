@@ -9,6 +9,7 @@ class DrawActorsAction(Action):
     def execute(self, cast, cue, callback):
         self._draw_animal(cast)
         self._draw_ground(cast)
+        self._draw_coin(cast)
 
     def _draw_animal(self, cast):
         animals = cast.get_actors("animals")
@@ -19,4 +20,8 @@ class DrawActorsAction(Action):
         ground = cast.get_actors("ground")
         for tile in ground:
             tile.draw()
-    
+
+    def _draw_coin(self,cast):
+        coin = cast.get_actors("coin")
+        for c in coin:
+            c.draw()

@@ -29,3 +29,9 @@ ANIMAL_WALKING[7] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk7.png")
 GROUND_MOVE_SPEED = -10
 GROUND_PATH = ":resources:images/tiles"
 GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grass.png")
+
+#COIN
+COIN_MOVE_SPEED = -40
+COIN_PATH = ":resources:images/items"
+COIN_PIC =  arcade.load_texture(f"{COIN_PATH}/coinGold.png")
+COIN_COUNT = 1
