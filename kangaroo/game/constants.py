@@ -50,3 +50,6 @@ PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
 
 COLLIDE_SOUND = arcade.load_sound(":resources:sounds/jump5.wav")
 
+# GAME SCENE BACKGROUND
+BACKGROUND_PATH = ":resources:images/backgrounds"
+BACKGROUND_IMAGE = arcade.load_texture(f"{BACKGROUND_PATH}/abstract_1.jpg")

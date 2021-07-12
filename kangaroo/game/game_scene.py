@@ -1,3 +1,5 @@
+from game.constants import BACKGROUND_IMAGE
+from game.background import Background
 import arcade
 from core.cast import Cast
 from core.cue import Cue
@@ -30,6 +32,8 @@ class GameScene(Scene):
             ground = Ground()
             ground.left = (i * ground.width)
             cast.add_actor("ground", ground)
+        background = Background()
+        cast.add_actor("background", background)
 
         for i in range(1):
             coin = Coin()
