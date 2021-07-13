@@ -1,3 +1,4 @@
+from game import background
 from core.action import Action
 
 
@@ -7,13 +8,16 @@ class DrawActorsAction(Action):
         super().__init__()
 
     def execute(self, cast, cue, callback):
+        self._draw_background(cast)
         self._draw_animal(cast)
         self._draw_ground(cast)
-
         self._draw_coin(cast)
-
         self._draw_plants(cast)
+
         self._draw_score(cast)
+
+        self._draw_labels(cast)
+        
 
     def _draw_animal(self, cast):
         animals = cast.get_actors("animals")
@@ -41,3 +45,12 @@ class DrawActorsAction(Action):
         score = cast.get_actors("score")
         for s in score:
             s.draw()
+    def _draw_background(self, cast):
+        backgrounds = cast.get_actors("background")
+        for background in backgrounds:
+            background.draw()
+
+    def _draw_labels(self, cast):
+        labels = cast.get_actors("labels")
+        for label in labels:
+            label.draw()

@@ -1,3 +1,5 @@
+from game.constants import BACKGROUND_IMAGE
+from game.background import Background
 import arcade
 import pyglet
 from core.cast import Cast
@@ -21,7 +23,9 @@ from game.move_actors_action import MoveActorsAction
 class GameScene(Scene):
 
     def __init__(self):
-        self.coin_list = arcade.SpriteList()
+        self.reset()
+        
+    def reset(self):
         # create the cast
         cast = Cast()
         animal = Animal()
@@ -33,13 +37,14 @@ class GameScene(Scene):
             ground = Ground()
             ground.left = (i * ground.width)
             cast.add_actor("ground", ground)
+        background = Background()
+        cast.add_actor("background", background)
 
+        self.coin_list = arcade.SpriteList()
         for i in range(1):
             coin = Coin()
             self.coin_list.append(coin)
-           
             cast.add_actor("coin", coin)
-
         cast.add_actor("plants", plants)
         cast.add_actor("score", score)
 

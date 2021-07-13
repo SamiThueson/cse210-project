@@ -14,6 +14,9 @@ class Director(arcade.Window, Action.Callback):
     def direct_scene(self, scene):
         self._scene = scene
     
+    def get_current_scene(self):
+        return self._scene
+        
     def on_draw(self):
         arcade.start_render()
         self._cue_action(Cue.ON_DRAW, {})
