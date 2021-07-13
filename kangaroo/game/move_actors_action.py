@@ -3,6 +3,7 @@ from core.action import Action
 from game import constants
 from game.plants import Plants
 from game.coin import Coin
+from game.clouds import Cloud
 
 
 class MoveActorsAction(Action):
@@ -13,12 +14,15 @@ class MoveActorsAction(Action):
         self._frame_for_coin = 180
         self._current_frame = 0
         self._current_coin_frame = 0
+        self._current_cloud_frame = 0
+        self._frame_for_cloud = 180
 
     def execute(self, cast, cue, callback):
         self._move_animal(cast)
         self._move_ground(cast)
         self._move_plants(cast)
         self._move_coin(cast)
+        self._move_cloud(cast)
 
     def _move_animal(self, cast):
         animal = cast.first_actor("animals")
@@ -48,8 +52,19 @@ class MoveActorsAction(Action):
             self._current_coin_frame = 0
             self._frame_for_coin = random.randint(1, 180)
 
-
-      
+    def _move_cloud(self, cast):
+        cloud = cast.get_actors("cloud")
+        for cl in cloud:
+            cl.update()
+        if len(cloud) != 0 and cloud[0].right < 0:
+            cloud.pop(0)
+        self._current_cloud_frame += 1
+        if self._current_cloud_frame >= self._frame_for_cloud:
+            
+            cloud = Cloud()
+            cast.add_actor("cloud", cloud)
+            self._current_cloud_frame = 0
+            self._frame_for_cloud = random.randint(1, 180)
 
     def _move_plants(self, cast):
         plants = cast.get_actors("plants")

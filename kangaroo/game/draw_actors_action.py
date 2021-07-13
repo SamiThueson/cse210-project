@@ -9,6 +9,7 @@ class DrawActorsAction(Action):
 
     def execute(self, cast, cue, callback):
         self._draw_background(cast)
+        self._draw_clouds(cast)
         self._draw_animal(cast)
         self._draw_ground(cast)
         self._draw_coin(cast)
@@ -47,3 +48,8 @@ class DrawActorsAction(Action):
         labels = cast.get_actors("labels")
         for label in labels:
             label.draw()
+
+    def _draw_clouds(self, cast):
+        cloud = cast.get_actors("cloud")
+        for cl in cloud:
+            cl.draw()

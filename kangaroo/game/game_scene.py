@@ -1,3 +1,4 @@
+from game.clouds import Cloud
 from game.constants import BACKGROUND_IMAGE
 from game.background import Background
 import arcade
@@ -7,7 +8,7 @@ from core.scene import Scene
 from core.script import Script
 from game.animal import Animal
 from game.ground import Ground
-
+from game.clouds import Cloud
 from game.coin import Coin
 
 from game.plants import Plants
@@ -28,6 +29,7 @@ class GameScene(Scene):
         cast = Cast()
         animal = Animal()
         plants = Plants()
+        clouds = Cloud()
 
         cast.add_actor("animals", animal)
         for i in range(10):
@@ -43,6 +45,7 @@ class GameScene(Scene):
             self.coin_list.append(coin)
             cast.add_actor("coin", coin)
         cast.add_actor("plants", plants)
+        cast.add_actor("clouds", clouds)
 
         self.set_cast(cast)
 

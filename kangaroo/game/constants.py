@@ -53,3 +53,9 @@ COIN_COLLIDE_SOUND = arcade.load_sound(":resources:sounds/coin1.wav")
 # GAME SCENE BACKGROUND
 BACKGROUND_PATH = ":resources:images/backgrounds"
 BACKGROUND_IMAGE = arcade.load_texture(f"{BACKGROUND_PATH}/abstract_1.jpg")
+
+# CLOUDS
+CLOUD_MOVE_SPEED = -5
+CLOUD_PATH = ":resources:images/enemies"
+CLOUD_PIC =  arcade.load_texture(f"{CLOUD_PATH}/fishPink.png")
+CLOUD_COUNT = 20
