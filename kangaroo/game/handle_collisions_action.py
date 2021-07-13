@@ -1,5 +1,6 @@
 
 from game import animal
+from game.label import Label
 
 from core.action import Action
 import arcade
@@ -28,11 +29,12 @@ class HandleCollisionsAction(Action):
         coin = cast.get_actors("coin")
         for c in coin:
             if arcade.check_for_collision(animal,c):
-               cast.remove_actor("coin",c)
-               animal.add_coins()
-               if animal.get_coins() % 5 == 0:
-                   animal.add_lives()
-                   print(animal.get_lives())
+                arcade.play_sound(constants.COIN_COLLIDE_SOUND)
+                cast.remove_actor("coin",c)
+                animal.add_coins()
+                if animal.get_coins() % 5 == 0:
+                    animal.add_lives()
+                    print(animal.get_lives())
 
         # a temporary work around until the ground is finished (mm)
         # if animal.bottom <= 100:
@@ -43,8 +45,10 @@ class HandleCollisionsAction(Action):
         plants = cast.get_actors("plants")
         animal = cast.first_actor("animals")
         for plant in plants:
-            if arcade.check_for_collision(animal, plant):
+            if not plant.has_collided() and arcade.check_for_collision(animal, plant):
+                plant.set_collided()
                 arcade.play_sound(constants.COLLIDE_SOUND)
                 animal.remove_lives()
                 if animal.get_lives() == 0:
-                    print('GAME OVER')
+                    label = Label("GAME OVER Press enter to start")
+                    cast.add_actor("labels", label)

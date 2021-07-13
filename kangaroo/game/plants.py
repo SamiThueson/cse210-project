@@ -12,6 +12,13 @@ class Plants(Actor):
         self.center_x = constants.SCREEN_WIDTH + (self.width / 2)
         self.center_y = 95 + (self.height / 2)
         self.change_x = constants.PLANT_MOVE_SPEED
+        self._collided = False
+
+    def has_collided(self):
+        return self._collided
+
+    def set_collided(self):
+        self._collided = True
 
     def update(self):
         self.center_x += self.change_x

@@ -21,7 +21,9 @@ from game.move_actors_action import MoveActorsAction
 class GameScene(Scene):
 
     def __init__(self):
-        self.coin_list = arcade.SpriteList()
+        self.reset()
+        
+    def reset(self):
         # create the cast
         cast = Cast()
         animal = Animal()
@@ -35,12 +37,11 @@ class GameScene(Scene):
         background = Background()
         cast.add_actor("background", background)
 
+        self.coin_list = arcade.SpriteList()
         for i in range(1):
             coin = Coin()
             self.coin_list.append(coin)
-           
             cast.add_actor("coin", coin)
-
         cast.add_actor("plants", plants)
 
         self.set_cast(cast)

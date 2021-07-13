@@ -11,12 +11,10 @@ class DrawActorsAction(Action):
         self._draw_background(cast)
         self._draw_animal(cast)
         self._draw_ground(cast)
-
         self._draw_coin(cast)
-
         self._draw_plants(cast)
+        self._draw_labels(cast)
         
-
 
     def _draw_animal(self, cast):
         animals = cast.get_actors("animals")
@@ -44,3 +42,8 @@ class DrawActorsAction(Action):
         backgrounds = cast.get_actors("background")
         for background in backgrounds:
             background.draw()
+
+    def _draw_labels(self, cast):
+        labels = cast.get_actors("labels")
+        for label in labels:
+            label.draw()

@@ -28,15 +28,13 @@ ANIMAL_WALKING[7] = arcade.load_texture(f"{ANIMAL_PATH}/femalePerson_walk7.png")
 # GROUND CONSTANTS
 GROUND_MOVE_SPEED = -10
 GROUND_PATH = ":resources:images/tiles"
+GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grassMid.png")
 
-
-#COIN
+# COIN
 COIN_MOVE_SPEED = -10
 COIN_PATH = ":resources:images/items"
 COIN_PIC =  arcade.load_texture(f"{COIN_PATH}/coinGold.png")
 COIN_COUNT = 1
-
-GROUND_GRASS = arcade.load_texture(f"{GROUND_PATH}/grassMid.png")
 
 # PLANT CONSTANTS
 PLANT_MOVE_SPEED = -10
@@ -48,7 +46,9 @@ PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
 # PLANT_IMAGE[2] = arcade.load_texture(f"{PLANT_PATH}/rock.png")
 # PLANT_IMAGE[3] = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
 
-COLLIDE_SOUND = arcade.load_sound(":resources:sounds/jump5.wav")
+# SOUNDS
+COLLIDE_SOUND = arcade.load_sound(":resources:sounds/hurt5.wav")
+COIN_COLLIDE_SOUND = arcade.load_sound(":resources:sounds/coin1.wav")
 
 # GAME SCENE BACKGROUND
 BACKGROUND_PATH = ":resources:images/backgrounds"
