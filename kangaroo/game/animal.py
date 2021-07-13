@@ -16,6 +16,7 @@ class Animal(Actor):
         self._num_jumps = 0
         self._lives = 3
         self._coins = 0
+        self._score = 0
         
     def jump(self):
         if not self._is_jumping:
@@ -72,6 +73,12 @@ class Animal(Actor):
         self._coins -= 1
         if self._coins < 0:
             self._coins = 0
+
+    def get_score(self):
+        return self._score
+    
+    def add_score(self):
+        self._score += 5
 
     def _update_position(self):
         self.change_y -= constants.GRAVITY   

@@ -18,11 +18,13 @@ class MoveActorsAction(Action):
         self._frame_for_cloud = 180
 
     def execute(self, cast, cue, callback):
-        self._move_animal(cast)
-        self._move_ground(cast)
-        self._move_plants(cast)
-        self._move_coin(cast)
-        self._move_cloud(cast)
+        animal = cast.first_actor("animals")
+        if animal.get_lives() != 0:
+            self._move_animal(cast)
+            self._move_ground(cast)
+            self._move_plants(cast)
+            self._move_coin(cast)
+            self._move_cloud(cast)
 
     def _move_animal(self, cast):
         animal = cast.first_actor("animals")

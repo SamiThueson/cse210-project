@@ -2,13 +2,18 @@ from game.clouds import Cloud
 from game.constants import BACKGROUND_IMAGE
 from game.background import Background
 import arcade
+import pyglet
 from core.cast import Cast
 from core.cue import Cue
 from core.scene import Scene
 from core.script import Script
 from game.animal import Animal
 from game.ground import Ground
+
 from game.clouds import Cloud
+
+from game.score import Score
+
 from game.coin import Coin
 
 from game.plants import Plants
@@ -31,6 +36,8 @@ class GameScene(Scene):
         plants = Plants()
         clouds = Cloud()
 
+        score = Score()
+
         cast.add_actor("animals", animal)
         for i in range(10):
             ground = Ground()
@@ -45,7 +52,10 @@ class GameScene(Scene):
             self.coin_list.append(coin)
             cast.add_actor("coin", coin)
         cast.add_actor("plants", plants)
+
         cast.add_actor("clouds", clouds)
+
+        cast.add_actor("score", score)
 
         self.set_cast(cast)
 
@@ -62,3 +72,6 @@ class GameScene(Scene):
         script.add_action(Cue.ON_UPDATE, handle_collisions_action)
         script.add_action(Cue.ON_DRAW, draw_actors_action)
         self.set_script(script)
+
+    '''def get_window() -> pyglet.window.window:*/'''
+        

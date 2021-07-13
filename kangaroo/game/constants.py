@@ -46,6 +46,10 @@ PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
 # PLANT_IMAGE[2] = arcade.load_texture(f"{PLANT_PATH}/rock.png")
 # PLANT_IMAGE[3] = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
 
+
+
+score1 = 0
+
 # SOUNDS
 COLLIDE_SOUND = arcade.load_sound(":resources:sounds/hurt5.wav")
 COIN_COLLIDE_SOUND = arcade.load_sound(":resources:sounds/coin1.wav")

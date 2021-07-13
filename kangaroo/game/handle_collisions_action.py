@@ -29,12 +29,14 @@ class HandleCollisionsAction(Action):
         coin = cast.get_actors("coin")
         for c in coin:
             if arcade.check_for_collision(animal,c):
-                arcade.play_sound(constants.COIN_COLLIDE_SOUND)
-                cast.remove_actor("coin",c)
-                animal.add_coins()
-                if animal.get_coins() % 5 == 0:
+
+               arcade.play_sound(constants.COIN_COLLIDE_SOUND)
+               cast.remove_actor("coin",c)
+               animal.add_coins()
+               animal.add_score()
+               if animal.get_coins() % 5 == 0:
                     animal.add_lives()
-                    print(animal.get_lives())
+                   
 
         # a temporary work around until the ground is finished (mm)
         # if animal.bottom <= 100:
