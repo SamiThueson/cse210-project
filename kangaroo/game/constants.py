@@ -49,4 +49,5 @@ PLANT_CACTUS = arcade.load_texture(f"{PLANT_PATH}/cactus.png")
 # PLANT_IMAGE[3] = arcade.load_texture(f"{PLANT_PATH}/mushroomRed.png")
 
 COLLIDE_SOUND = arcade.load_sound(":resources:sounds/jump5.wav")
-
+score1 = 0
+SCORE = arcade.draw_text(f"{score1}", 780, 500, arcade.color.WHITE)

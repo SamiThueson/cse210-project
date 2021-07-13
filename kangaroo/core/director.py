@@ -1,13 +1,15 @@
 import arcade
+import pyglet
 from core.action import Action
 from core.cue import Cue
 
-
+_window = None
 class Director(arcade.Window, Action.Callback):
     
     def __init__(self, screen_width, screen_height):
         super().__init__(screen_width, screen_height)
         self._scene = None
+        
         
     def direct_scene(self, scene):
         self._scene = scene
@@ -15,7 +17,7 @@ class Director(arcade.Window, Action.Callback):
     def on_draw(self):
         arcade.start_render()
         self._cue_action(Cue.ON_DRAW, {})
-        self._scene.get_cast().clean_actors()
+        '''self._scene.get_cast().clean_actors()'''
         
     def on_key_press(self, key, modifiers):
         cue_info = { "key": key, "modifiers": modifiers }
@@ -51,6 +53,16 @@ class Director(arcade.Window, Action.Callback):
     def on_update(self, delta_time):
         cue_info = { "delta_time": delta_time }
         self._cue_action(Cue.ON_UPDATE, cue_info)
+    
+    def get_window() -> pyglet.window.Window:
+   
+        if _window is None:
+            raise RuntimeError("No window is active. Use set_window() to set an active window")
+
+        return _window
+
+
+
         
     def _cue_action(self, cue_name, cue_info):
         cast = self._scene.get_cast()

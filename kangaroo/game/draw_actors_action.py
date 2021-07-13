@@ -13,7 +13,7 @@ class DrawActorsAction(Action):
         self._draw_coin(cast)
 
         self._draw_plants(cast)
-
+        self._draw_score(cast)
 
     def _draw_animal(self, cast):
         animals = cast.get_actors("animals")
@@ -37,3 +37,7 @@ class DrawActorsAction(Action):
         for plant in plants:
             plant.draw()
 
+    def _draw_score(self,cast):
+        score = cast.get_actors("score")
+        for s in score:
+            s.draw()

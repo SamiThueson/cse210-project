@@ -30,6 +30,10 @@ class HandleCollisionsAction(Action):
             if arcade.check_for_collision(animal,c):
                cast.remove_actor("coin",c)
                animal.add_coins()
+               animal.add_score()
+               print(animal.get_score())
+               print(animal.get_coins())
+               print(animal.get_lives())
                if animal.get_coins() % 5 == 0:
                    animal.add_lives()
                    print(animal.get_lives())
