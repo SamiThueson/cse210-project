@@ -33,10 +33,9 @@ class HandleCollisionsAction(Action):
                arcade.play_sound(constants.COIN_COLLIDE_SOUND)
                cast.remove_actor("coin",c)
                animal.add_coins()
+               animal.add_score()
                if animal.get_coins() % 5 == 0:
                     animal.add_lives()
-                    print(animal.get_lives())
-
                    
 
         # a temporary work around until the ground is finished (mm)

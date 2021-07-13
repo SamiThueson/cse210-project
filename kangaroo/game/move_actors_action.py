@@ -15,10 +15,12 @@ class MoveActorsAction(Action):
         self._current_coin_frame = 0
 
     def execute(self, cast, cue, callback):
-        self._move_animal(cast)
-        self._move_ground(cast)
-        self._move_plants(cast)
-        self._move_coin(cast)
+        animal = cast.first_actor("animals")
+        if animal.get_lives() != 0:
+            self._move_animal(cast)
+            self._move_ground(cast)
+            self._move_plants(cast)
+            self._move_coin(cast)
 
     def _move_animal(self, cast):
         animal = cast.first_actor("animals")

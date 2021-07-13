@@ -42,9 +42,16 @@ class DrawActorsAction(Action):
             plant.draw()
 
     def _draw_score(self,cast):
-        score = cast.get_actors("score")
-        for s in score:
-            s.draw()
+        animal = cast.first_actor("animals")
+        points = animal.get_score()
+        coins = animal.get_coins()
+        lives = animal.get_lives()
+        score = cast.first_actor("score")
+        score.set_coins(coins)
+        score.set_lives(lives)
+        score.set_points(points)
+        score.draw()
+
     def _draw_background(self, cast):
         backgrounds = cast.get_actors("background")
         for background in backgrounds:

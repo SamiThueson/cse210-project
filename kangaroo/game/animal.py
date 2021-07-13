@@ -80,8 +80,6 @@ class Animal(Actor):
     def add_score(self):
         self._score += 5
 
-    
-
     def _update_position(self):
         self.change_y -= constants.GRAVITY   
         self.center_y += self.change_y

@@ -20,7 +20,7 @@ class Director(arcade.Window, Action.Callback):
     def on_draw(self):
         arcade.start_render()
         self._cue_action(Cue.ON_DRAW, {})
-        '''self._scene.get_cast().clean_actors()'''
+        self._scene.get_cast().clean_actors()
         
     def on_key_press(self, key, modifiers):
         cue_info = { "key": key, "modifiers": modifiers }

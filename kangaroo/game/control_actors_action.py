@@ -26,6 +26,6 @@ class ControlActorsAction(Action):
     def _restart_game(self, cue, cast, callback):
         cue_info = cue.get_info()
         animal = cast.first_actor("animals")
-        if animal.get_lives == 0 and cue_info["key"] == arcade.key.ENTER:
+        if animal.get_lives() == 0 and cue_info["key"] == arcade.key.ENTER:
             scene = callback.get_current_scene()
             scene.reset()
