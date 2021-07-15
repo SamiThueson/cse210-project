@@ -17,9 +17,11 @@ class Animal(Actor):
         self._lives = 3
         self._coins = 0
         self._score = 0
+        self._number_of_jumps = 0
         
     def jump(self):
-        if not self._is_jumping:
+        if self._number_of_jumps < 2:
+            self._number_of_jumps += 1
             self._is_jumping = True
             self._is_walking = False
             self.change_y = constants.ANIMAL_JUMP_SPEED
@@ -28,6 +30,7 @@ class Animal(Actor):
         self._is_jumping = False
         self._is_walking = True
         self.change_y = 0
+        self._number_of_jumps = 0
         
     def update(self):
         self._update_position()

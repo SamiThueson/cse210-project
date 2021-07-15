@@ -1,3 +1,4 @@
+from game.speed_tracker import SpeedTracker
 from game.clouds import Cloud
 from game.constants import BACKGROUND_IMAGE
 from game.background import Background
@@ -35,8 +36,8 @@ class GameScene(Scene):
         animal = Animal()
         plants = Plants()
         clouds = Cloud()
-
         score = Score()
+        speed_tracker = SpeedTracker()
 
         cast.add_actor("animals", animal)
         for i in range(10):
@@ -52,11 +53,9 @@ class GameScene(Scene):
             self.coin_list.append(coin)
             cast.add_actor("coin", coin)
         cast.add_actor("plants", plants)
-
         cast.add_actor("clouds", clouds)
-
         cast.add_actor("score", score)
-
+        cast.add_actor("speed_tracker", speed_tracker)
         self.set_cast(cast)
 
 

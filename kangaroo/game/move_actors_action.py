@@ -4,19 +4,22 @@ from game import constants
 from game.plants import Plants
 from game.coin import Coin
 from game.clouds import Cloud
+from game.ground import Ground
 
 
 class MoveActorsAction(Action):
     
     def __init__(self):
         super().__init__()
-        self._frame_for_plants = 180 #180 means 3 seconds
-        self._frame_for_coin = 180
         self._current_frame = 0
         self._current_coin_frame = 0
         self._current_cloud_frame = 0
+        self._current_speed_frame = 0
         self._frame_for_cloud = 180
-
+        self._frame_for_speedup = 300
+        self._frame_for_plants = 180 #180 means 3 seconds
+        self._frame_for_coin = 180
+        
     def execute(self, cast, cue, callback):
         animal = cast.first_actor("animals")
         if animal.get_lives() != 0:
@@ -25,6 +28,7 @@ class MoveActorsAction(Action):
             self._move_plants(cast)
             self._move_coin(cast)
             self._move_cloud(cast)
+            # self._increase_speed(cast)
 
     def _move_animal(self, cast):
         animal = cast.first_actor("animals")
@@ -35,7 +39,8 @@ class MoveActorsAction(Action):
         for tile in ground:
             tile.update()
         if ground[0].right < 0:
-            tile = ground.pop(0)
+            ground.pop(0)
+            tile = Ground()
             tile.left = ground[-1].right
             ground.append(tile)
     
@@ -48,7 +53,6 @@ class MoveActorsAction(Action):
             coin.pop(0)
         self._current_coin_frame += 1
         if self._current_coin_frame >= self._frame_for_coin:
-            
             coin = Coin()
             cast.add_actor("coin", coin)
             self._current_coin_frame = 0
@@ -60,9 +64,9 @@ class MoveActorsAction(Action):
             cl.update()
         if len(cloud) != 0 and cloud[0].right < 0:
             cloud.pop(0)
+            
         self._current_cloud_frame += 1
         if self._current_cloud_frame >= self._frame_for_cloud:
-            
             cloud = Cloud()
             cast.add_actor("cloud", cloud)
             self._current_cloud_frame = 0
@@ -82,3 +86,14 @@ class MoveActorsAction(Action):
             self._current_frame = 0
             self._frame_for_plants = random.randint(1, 180)
 
+    def _increase_speed(self, cast):
+        self._current_speed_frame += 1
+        if self._current_speed_frame >= self._frame_for_speedup:
+            speed_tracker = cast.first_actor("speed_tracker")
+            speed_tracker.increase_speed()
+            speed_factor = speed_tracker.get_speed()
+            for group in cast.get_all_actors():
+                for actor in group:
+                    actor.change_x *= speed_factor
+                    print(group, "-", speed_factor, "-", actor.change_x)
+            self._current_speed_frame = 0

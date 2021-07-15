@@ -28,5 +28,8 @@ class Cast:
     def get_actors(self, group):
         return self._current_actors.get(group, list())
 
+    def get_all_actors(self):
+        return self._current_actors.values()
+        
     def remove_actor(self, group, actor):
         self._removed_actors[group].append(actor)
