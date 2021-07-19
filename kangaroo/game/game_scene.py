@@ -17,6 +17,7 @@ from game.score import Score
 from game.coin import Coin
 
 from game.plants import Plants
+from game.coin_display import Coin_Display
 
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
@@ -35,6 +36,7 @@ class GameScene(Scene):
         animal = Animal()
         plants = Plants()
         clouds = Cloud()
+        coindisplay = Coin_Display()
 
         score = Score()
 
@@ -56,6 +58,7 @@ class GameScene(Scene):
         cast.add_actor("clouds", clouds)
 
         cast.add_actor("score", score)
+        cast.add_actor("coindisplay", coindisplay)
 
         self.set_cast(cast)
 

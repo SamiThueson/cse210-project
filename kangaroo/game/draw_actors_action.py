@@ -14,6 +14,7 @@ class DrawActorsAction(Action):
         self._draw_ground(cast)
         self._draw_coin(cast)
         self._draw_plants(cast)
+        self._draw_coindisplay(cast)
 
         self._draw_score(cast)
 
@@ -67,3 +68,9 @@ class DrawActorsAction(Action):
         cloud = cast.get_actors("cloud")
         for cl in cloud:
             cl.draw()
+
+    def _draw_coindisplay(self, cast):
+        coindisplay = cast.get_actors("coindisplay")
+        for cd in coindisplay:
+            cd.draw()
+
