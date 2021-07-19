@@ -2,6 +2,8 @@ from core.actor import Actor
 from game import constants
 import random
 import arcade
+
+
 class Coin_Display(Actor):
 
     def __init__(self):

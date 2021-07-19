@@ -24,6 +24,6 @@ class Score(Actor):
 
     def draw(self):
         arcade.draw_text(f"Score: {self._points}", 500, self.center_y, arcade.color.WHITE)
-        arcade.draw_text(f"{self._coins}", 600, self.center_y, arcade.color.WHITE)
+        arcade.draw_text(f"{self._coins}", 640, self.center_y, arcade.color.WHITE)
         arcade.draw_text(f"Lives: {self._lives}", 700, self.center_y, arcade.color.WHITE)
         

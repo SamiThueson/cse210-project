@@ -38,7 +38,6 @@ class GameScene(Scene):
         plants = Plants()
         clouds = Cloud()
         coindisplay = Coin_Display()
-
         score = Score()
         speed_tracker = SpeedTracker()
 
@@ -59,8 +58,8 @@ class GameScene(Scene):
         cast.add_actor("clouds", clouds)
         cast.add_actor("score", score)
         cast.add_actor("coindisplay", coindisplay)
-
         cast.add_actor("speed_tracker", speed_tracker)
+        
         self.set_cast(cast)
 
 

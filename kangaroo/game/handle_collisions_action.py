@@ -37,12 +37,6 @@ class HandleCollisionsAction(Action):
                if animal.get_coins() % 5 == 0:
                     animal.add_lives()
                    
-
-        # a temporary work around until the ground is finished (mm)
-        # if animal.bottom <= 100:
-        #     animal.bottom = 100
-        #     animal.walk()
-
     def _handle_plant_animal_collisions(self, cast):
         plants = cast.get_actors("plants")
         animal = cast.first_actor("animals")
